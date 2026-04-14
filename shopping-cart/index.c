@@ -4,6 +4,9 @@ int main()
 {
     bool isRunning = true;
     bool mainMenu = false;
+    bool laptopMenu = false;
+    bool phoneMenu = false;
+    bool cartMenu = false;
 
     struct Laptop
     {
@@ -51,20 +54,46 @@ int main()
             scanf(" %c", &menu);
             if (menu == 'l')
             {
+                mainMenu = false;
+                laptopMenu = true;
                 for (int i = 0; i < laptopsAmount; i++)
                 {
                     printf("%d. %s, price - %f$, quantity - %d \n", i + 1, laptops[i].name, laptops[i].price, laptops[i].quantity);
                 }
                 printf("\n");
+                while (laptopMenu)
+                {
+                    int choice;
+                    printf("enter number of item u wanna add to cart (0 go back)");
+                    scanf("%d", &choice);
+                    if (choice == 0)
+                    {
+                        laptopMenu = false;
+                        mainMenu = true;
+                    }
+                }
             }
 
             if (menu == 'p')
             {
+                mainMenu = false;
+                phoneMenu = true;
                 for (int i = 0; i < phonesAmount; i++)
                 {
                     printf("%d. %s, price - %f$, quantity - %d \n", i + 1, phones[i].name, phones[i].price, phones[i].quantity);
                 }
                 printf("\n");
+                while (phoneMenu)
+                {
+                    int choice;
+                    printf("enter number of item u wanna add to cart (0 go back)");
+                    scanf("%d", &choice);
+                    if (choice == 0)
+                    {
+                        phoneMenu = false;
+                        mainMenu = true;
+                    }
+                }
             }
 
             if (menu == 'v')
