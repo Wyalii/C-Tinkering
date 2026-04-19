@@ -29,9 +29,19 @@ int main()
         float price;
         int quantity;
     };
+    struct Cart
+    {
+        struct Laptop laptops[10];
+        struct Phone phones[10];
+        int laptopCount;
+        int phoneCunt;
+    };
 
     while (isRunning)
     {
+        struct Cart userCart = {
+
+        };
         printf("SHOPPING CART PROGRAM. \n");
         int bankAccount = 0;
         char menu;
@@ -61,7 +71,23 @@ int main()
             printf("l - laptops. \n");
             printf("p - phones. \n");
             printf("v - view balance. \n");
+            printf("c - view cart");
             scanf(" %c", &menu);
+            clearScreen();
+
+            if (menu == 'c')
+            {
+                for (int i = 0; i < userCart.laptopCount; i++)
+                {
+                    printf("%s", userCart.laptops[i].name);
+                }
+                printf("\n");
+                printf("\npress enter to go back...\n");
+                getchar();
+                getchar();
+                clearScreen();
+            }
+
             if (menu == 'l')
             {
                 clearScreen();
@@ -80,6 +106,14 @@ int main()
                     clearScreen();
                     if (choice == 0)
                     {
+                        laptopMenu = false;
+                        mainMenu = true;
+                    }
+                    if (choice >= 1 && choice <= laptopsAmount)
+                    {
+                        userCart.laptops[userCart.laptopCount] = laptops[choice - 1];
+                        userCart.laptopCount++;
+                        printf("added %s to cart!\n", laptops[choice - 1].name);
                         laptopMenu = false;
                         mainMenu = true;
                     }
