@@ -1,5 +1,14 @@
 #include <stdio.h>
 #include <stdbool.h>
+#include <stdlib.h>
+void clearScreen()
+{
+#ifdef _WIN32
+    system("cls");
+#else
+    system("clear");
+#endif
+}
 int main()
 {
     bool isRunning = true;
@@ -46,6 +55,7 @@ int main()
         printf("enter your balance: \n");
         scanf("%d", &bankAccount);
         mainMenu = true; // loop will run main menu from this point.
+        clearScreen();
         while (mainMenu)
         {
             printf("l - laptops. \n");
@@ -54,6 +64,7 @@ int main()
             scanf(" %c", &menu);
             if (menu == 'l')
             {
+                clearScreen();
                 mainMenu = false;
                 laptopMenu = true;
                 for (int i = 0; i < laptopsAmount; i++)
@@ -66,6 +77,7 @@ int main()
                     int choice;
                     printf("enter number of item u wanna add to cart (0 go back)");
                     scanf("%d", &choice);
+                    clearScreen();
                     if (choice == 0)
                     {
                         laptopMenu = false;
@@ -76,6 +88,7 @@ int main()
 
             if (menu == 'p')
             {
+                clearScreen();
                 mainMenu = false;
                 phoneMenu = true;
                 for (int i = 0; i < phonesAmount; i++)
@@ -88,6 +101,7 @@ int main()
                     int choice;
                     printf("enter number of item u wanna add to cart (0 go back)");
                     scanf("%d", &choice);
+                    clearScreen();
                     if (choice == 0)
                     {
                         phoneMenu = false;
@@ -98,7 +112,10 @@ int main()
 
             if (menu == 'v')
             {
+
+                clearScreen();
                 printf("your balance is: %d", bankAccount);
+                printf("\n");
                 printf("\n");
             };
         }
